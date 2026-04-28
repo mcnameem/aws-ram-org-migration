@@ -11,7 +11,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input-file", required=True)
     parser.add_argument("--region", required=True)
-    parser.add_argument("--execute", action="store_true", default=False)
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--execute", action="store_true", help="Perform changes against AWS.")
+    mode.add_argument("--dry-run", action="store_true", help="Preview changes without calling mutating APIs.")
     args = parser.parse_args()
 
     ram = boto3.client("ram", region_name=args.region)

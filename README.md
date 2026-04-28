@@ -2,7 +2,7 @@
 
 Three scripts for managing AWS RAM (Resource Access Manager) bridge shares. Bridge shares are duplicates of organization-internal shares that enable cross-account resource sharing to survive an account leaving an organization.
 
-All scripts support a `--execute` flag. Without it they run in dry-run mode and make no changes.
+All scripts require either `--execute` (perform changes) or `--dry-run` (preview only). Neither flag defaults on; one must be supplied explicitly.
 
 ---
 
@@ -54,7 +54,7 @@ Creates bridge shares from existing RAM shares that contain internal (non-extern
 
 ```bash
 # Dry run
-python create_bridge_shares.py --region us-east-1
+python create_bridge_shares.py --region us-east-1 --dry-run
 
 # Execute
 python create_bridge_shares.py --region us-east-1 --execute
@@ -81,7 +81,7 @@ Re-associates internal principals back into their original RAM shares using the 
 
 ```bash
 # Dry run
-python restore_principals.py --input-file internal_principals_123456789012_us-east-1.json --region us-east-1
+python restore_principals.py --input-file internal_principals_123456789012_us-east-1.json --region us-east-1 --dry-run
 
 # Execute
 python restore_principals.py --input-file internal_principals_123456789012_us-east-1.json --region us-east-1 --execute
