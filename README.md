@@ -105,7 +105,7 @@ Deletes bridge shares after confirming the original share still covers all the s
 
 ```bash
 # Dry run
-python delete_bridge_shares.py --region us-east-1
+python delete_bridge_shares.py --region us-east-1 --dry-run
 
 # Execute
 python delete_bridge_shares.py --region us-east-1 --execute
